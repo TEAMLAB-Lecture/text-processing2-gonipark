@@ -75,7 +75,7 @@ def to_camel_case(underscore_str):
     else:
         camelcase_str = underscore_str.title()
         camelcase_str=camelcase_str.replace('_','')
-        if len(camelcase_str)>1:
+        if len(camelcase_str)>1:   #input이 "____"같은 경우 인덱스 에러가 나기 때문에 길이가 2이상인것만 하도록 함
             camelcase_str=camelcase_str[0].lower()+camelcase_str[1:]
         
         return camelcase_str
