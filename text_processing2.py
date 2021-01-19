@@ -28,7 +28,13 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    digit_dict={'0':'zero','1':'one','2':'two','3':'three','4':'four','5':'five','6':'six','7':'seven','8':'eight','9':'nine',}
+    digit_string = ''
+    for char in input_string:
+        if char.isdigit():
+            digit_string+=digit_dict[char]
+            digit_string+=' '
+    digit_string=digit_string.rstrip()
     return digit_string
 
 
@@ -64,5 +70,12 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
-    return camelcase_str
+    if '_' not in underscore_str:
+        return underscore_str
+    else:
+        camelcase_str = underscore_str.title()
+        camelcase_str=camelcase_str.replace('_','')
+        if len(camelcase_str)>1:   #input이 "____"같은 경우 인덱스 에러가 나기 때문에 길이가 2이상인것만 하도록 함
+            camelcase_str=camelcase_str[0].lower()+camelcase_str[1:]
+        
+        return camelcase_str
